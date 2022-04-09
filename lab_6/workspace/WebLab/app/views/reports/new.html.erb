@@ -1,0 +1,17 @@
+<h2> Добавление отчета </h2>
+
+<%ects_grades = [nil,'A (100-90)','B (89-82)','C (81-75)','D (74-69)','E (68-60)','FX (59-35)','F (34-1)']%>
+
+<%=form_with model: @report do |f|%>
+    <p><%=f.label :user_id, 'User ID'%>
+    <%=f.number_field :user_id%></p>
+    <p><%=f.label :title, 'Заголовок'%>
+    <%=f.text_field :title%></p>
+    <p><%=f.label :description, 'Текст'%>
+    <%=f.text_area :description, rows: 5%></p>
+    <p><%=f.label :grade, 'Оценка'%>
+    <%=f.select :grade, ects_grades%></p>
+    <%=f.submit '+ Добавить работу'%>
+<%end%>
+
+<%=button_to '⇐ Отмена', reports_path, method: :get%>

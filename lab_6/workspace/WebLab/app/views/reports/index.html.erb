@@ -1,0 +1,22 @@
+<h1 align="center"> Выполненные работы </h1>
+<hr>
+<p align="center">Отчет на <%= Time.now %></p>
+<hr>
+
+<%# <%=button_to '+ Добавить работу', %>
+<button onclick="location.href = 'reports/new'"> + Добавить работу </button>
+<br><br>
+
+<% @reports.each do |r| %>
+    <h3><%= r.title %></h3>
+    <p><%= r.description %></p>
+    <div style="display:flex">
+        <%if (r.grade).eql?(nil) || (r.grade).eql?('')%>
+            <%= button_to '✔ Оценить работу', edit_report_path(r.id), method: :get%>
+        <%else%>
+            <b>Оценка: <%=r.grade%></b>
+        <%end%> &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%=button_to '☒ Удалить работу', report_path(r), method: :delete %>
+    </div>
+    <br><br>
+<%end%>
