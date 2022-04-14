@@ -1,0 +1,23 @@
+<div align="center">
+    <h2> Добавление оценки </h2>
+
+    <%=form_with model: @report do |f| %>
+        <p><%=f.radio_button :grade, 'A (100-90)'%>
+        <%=f.label :grade_a, 'A (100-90)'%></p>
+        <p><%=f.radio_button :grade, 'B (89-82)'%>
+        <%=f.label :grade_b, 'B (89-82)'%></p>
+        <p><%=f.radio_button :grade, 'C (81-75)'%>
+        <%=f.label :grade_c, 'C (81-75)'%></p>
+        <p><%=f.radio_button :grade, 'D (74-69)'%>
+        <%=f.label :grade_d, 'D (74-69)'%></p>
+        <p><%=f.radio_button :grade, 'E (68-60)'%>
+        <%=f.label :grade_e, 'E (68-60)'%></p>
+        <p><%=f.radio_button :grade, 'FX (59-35)'%>
+        <%=f.label :grade_fx, 'FX (59-35)'%></p>
+        <p><%=f.radio_button :grade, 'F (34-1)'%>
+        <%=f.label :grade_f, 'F (34-1)'%></p>
+        <p><%=f.submit 'Оценить'%></p>
+    <%end%>
+</div>
+<br>
+<%=button_to '⇐ Отмена', reports_path, method: :get%>

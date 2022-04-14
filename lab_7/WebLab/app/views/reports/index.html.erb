@@ -1,0 +1,25 @@
+<%=button_to '⇐ На Главную', root_path, method: :get%>
+<p style="font-size:3; color:blue; margin-right:80px" align="right"><%=current_user.first_name%> <%=current_user.last_name%></p>
+<a data-method="get" href="/session" style="float:right; margin-right:80px">Выйти</a><br>
+<h1 align="center"> Выполненные работы </h1>
+<hr>
+<p align="center">Отчет на <%= Time.now %></p>
+<hr>
+
+<%# <%=button_to '+ Добавить работу', %>
+<button onclick="location.href = 'reports/new'"> + Добавить работу </button>
+<br><br>
+
+<% @reports.each do |r| %>
+    <h3><%= r.title %></h3>
+    <p><%= r.description %></p>
+    <div style="display:flex">
+        <%if (r.grade).eql?(nil) || (r.grade).eql?('')%>
+            <%= button_to '✔ Оценить работу', edit_report_path(r.id), method: :get%>
+        <%else%>
+            <b>Оценка: <%=r.grade%></b>
+        <%end%> &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%=button_to '☒ Удалить работу', report_path(r), method: :delete %>
+    </div>
+    <br><br>
+<%end%>
