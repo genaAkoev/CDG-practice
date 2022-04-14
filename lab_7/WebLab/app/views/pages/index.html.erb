@@ -1,0 +1,23 @@
+<center>
+    <%if flash[:alert]%>
+        <font color="red"><%= flash[:alert] %></font>
+    <%elsif flash[:success] %>
+        <font color="green"><%= flash[:success] %></font>
+    <%else%>
+        <font color="blue"><%= flash[:notice] %></font>
+    <%end%>
+    <h1>Добро пожаловать в WebLab!<h2>
+    <% if user_signed_in? %>
+        <font color="blue"> Вы вошли как: <%= current_user.first_name %> <%= current_user.last_name %> </font>
+        <br>
+        <%= link_to 'Выйти', '/session', method: :get%>
+        <br><br>
+        <%= link_to 'К отчетам пользователя', reports_path %>
+    <% else %>
+        <p>У вас нет аккаунта? Зарегистрируйтесь!</p>
+        <%= link_to 'Регистрация', new_user_path %>
+        <br><br>
+        <p>Есть аккаунт? Авторизуйтесь!</p>
+        <%= link_to 'Войти', new_session_path%>
+    <% end %>
+</center>

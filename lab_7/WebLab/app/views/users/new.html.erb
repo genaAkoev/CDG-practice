@@ -1,0 +1,20 @@
+<div align="center">
+    <h1>Регистрация пользователя</h1>
+    <%= form_with model: @user, url: users_path do |f|%>
+        <%= f.label :first_name, 'Имя'%>
+        <%= f.text_field :first_name %>
+        <br>
+        <%= f.label :last_name, 'Фамилия'%>
+        <%= f.text_field :last_name %>
+        <br>
+        <%= f.label :email, 'E-mail'%>
+        <%= f.email_field :email %>
+        <br>
+        <%= f.label :password, 'Пароль'%>
+        <%= f.password_field :password%>
+        <br>
+        <%= f.submit 'Зарегистрировать'%>
+    <% end %>
+</div>
+<br>
+<%= button_to '⇐ На Главную', root_path, method: :get %>
